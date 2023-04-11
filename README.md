@@ -2,8 +2,8 @@
 
 ## Infos
 
-*The source code is stored into the 1.16.5, 1.18.2 and 1.19.3 branches
-This branch (main) is for documentation about the mod and datapack possibilities*
+- *The source code of the mod is accesible through the [1.16.5](../1.16.5) , [1.18.2](../1.18.2) and [1.19.3](../1.19.3) branches.*
+- *This branch (main) is for documentation about the mod and datapack possibilities*
 
 ## Current Origins
 
@@ -42,4 +42,4 @@ This branch (main) is for documentation about the mod and datapack possibilities
 
 ## TODO
 
-- [ ] **[Wiki](/wiki)**
+- [ ] **[Wiki](../wiki)**
