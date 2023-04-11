@@ -1,0 +1,68 @@
+{
+  "type": "origins:prevent_death",
+  "entity_action": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "slimeorigins:fragmentation",
+        "power": 2
+      },
+      {
+        "type": "origins:change_resource",
+        "resource": "slimeorigins:frag_cooldown_bar01",
+        "operation": "add",
+        "change": 1
+      }
+    ]
+  },
+  "condition": {
+    "type": "origins:or",
+    "conditions": [
+      {
+        "type": "origins:resource",
+        "resource": "slimeorigins:frag_cooldown_bar02",
+        "comparison": ">",
+        "compare_to": 1
+      },
+      {
+        "type": "origins:on_fire"
+      },
+      {
+        "type": "origins:resource",
+        "resource": "slimeorigins:melting_state",
+        "comparison": ">",
+        "compare_to": 40
+      },
+      {
+        "type": "origins:on_block",
+        "block_condition": {
+          "type": "origins:in_tag",
+          "tag": "slimeorigins:hot_blocks"
+        }
+      },
+      {
+        "type": "origins:and",
+        "conditions": [
+          {
+            "type": "origins:biome",
+            "condition": {
+              "type": "origins:temperature",
+              "comparison": ">=",
+              "compare_to": 3
+            }
+          },
+          {
+            "type": "origins:biome",
+            "condition": {
+              "type": "origins:high_humidity",
+              "inverted": true
+            }
+          }
+        ]
+      }
+    ],
+    "inverted": true
+  },
+  "name": "Slime Fragmentation",
+  "description": "When you die your maximum health, your size and some other things are reduced.\nDoes this makes less slippery?"
+}

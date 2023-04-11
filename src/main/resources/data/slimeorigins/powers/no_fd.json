@@ -1,0 +1,5 @@
+{
+  "type" : "slimeorigins:no_fall_damage",
+  "name": "Can't break a leg",
+  "description": "Your bounciness doesn't allow you to be hurt by high falls"
+}

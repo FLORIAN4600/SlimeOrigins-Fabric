@@ -1,0 +1,18 @@
+{
+  "type": "origins:resource",
+  "min": 0,
+  "max": 72,
+  "hud_render": {
+    "should_render": true,
+    "sprite_location": "slimeorigins:textures/gui/resource_bars_v01.png",
+    "bar_index": 0,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "slimeorigins:melting_state",
+      "comparison": ">",
+      "compare_to": 2
+    }
+  },
+  "name": "Melting State",
+  "hidden": true
+}
