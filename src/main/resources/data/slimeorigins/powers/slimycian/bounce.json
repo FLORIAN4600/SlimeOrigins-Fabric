@@ -1,0 +1,38 @@
+{
+  "type" : "slimeorigins:bounciness",
+  "bounce_multipliers": [
+    {
+      "id": "minecraft:slime_block",
+      "value": 1.70
+    },
+    {
+      "id": "minecraft:honey_block",
+      "value": 0.40
+    }
+  ],
+  "bounce_sound": {
+    "default_volume": 0.12,
+    "block_pitches": [
+      {
+        "id": "minecraft:slime_block",
+        "value": 0.20
+      },
+      {
+        "id": "minecraft:honey_block",
+        "value": -0.10
+      }
+    ],
+    "block_volumes": [
+      {
+        "id": "minecraft:slime_block",
+        "value": 0.18
+      },
+      {
+        "id": "minecraft:honey_block",
+        "value": 0.14
+      }
+    ]
+  },
+  "name": "Bounciness",
+  "description": "You bounce on any block like a certain Slime Mob.\nBut don't try it on a Slime block or you will be sent to the moon"
+}

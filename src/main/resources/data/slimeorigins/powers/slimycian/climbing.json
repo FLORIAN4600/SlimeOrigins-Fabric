@@ -1,0 +1,83 @@
+{
+  "type": "origins:multiple",
+  "toggle": {
+    "type": "origins:toggle",
+    "key": {
+      "key": "key.origins.primary_active",
+      "continuous": false
+    }
+  },
+  "climbing": {
+    "type": "origins:climbing",
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:power_active",
+          "power": "*:*_toggle"
+        },
+        {
+          "type": "origins:block_in_radius",
+          "block_condition": {
+            "type": "origins:or",
+            "conditions": [
+              {
+                "type": "origins:in_tag",
+                "tag": "slimeorigins:hot_block"
+              },
+              {
+                "type": "origins:in_tag",
+                "tag": "minecraft:lava"
+              }
+            ]
+          },
+          "radius": 1,
+          "shape": "star",
+          "comparison": ">=",
+          "compare_to": 2,
+          "inverted": true
+        },
+        {
+          "type": "origins:collided_horizontally"
+        }
+      ]
+    },
+    "hold_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:power_active",
+          "power": "*:*_toggle"
+        },
+        {
+          "type": "origins:health",
+          "comparison": "<=",
+          "compare_to": 4
+        },
+        {
+          "type": "origins:on_fire",
+          "inverted": true
+        },
+        {
+          "type": "origins:or",
+          "conditions": [
+            {
+              "type": "origins:block_collision",
+              "offset_x": 0.11,
+              "offset_z": 0.11,
+              "offset_y": 0
+            },
+            {
+              "type": "origins:block_collision",
+              "offset_x": -0.11,
+              "offset_z": -0.11,
+              "offset_y": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "name": "Slime Parkour",
+  "description": "Your Semi-Solid State Permisses you to climb on walls but not near hot blocks (can be disabled with the primary action key)"
+}

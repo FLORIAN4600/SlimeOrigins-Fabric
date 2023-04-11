@@ -1,0 +1,459 @@
+{
+  "type": "origins:multiple",
+  "drink": {
+    "type": "origins:action_on_item_use",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "slimeorigins:melting_state",
+      "operation": "add",
+      "change": -18
+    },
+    "item_condition": {
+      "type": "origins:ingredient",
+      "ingredient": [
+        {
+          "item": "minecraft:potion"
+        },{
+          "item": "minecraft:milk_bucket"
+        },
+        {
+          "item": "minecraft:suspicious_stew"
+        },
+        {
+          "item": "minecraft:rabbit_stew"
+        },
+        {
+          "item": "minecraft:mushroom_stew"
+        }
+      ]
+    }
+  },
+  "eat": {
+    "type": "origins:action_on_item_use",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "slimeorigins:melting_state",
+      "operation": "add",
+      "change": -2
+    },
+    "item_condition": {
+      "type": "origins:ingredient",
+      "ingredient": [
+        {
+          "item": "minecraft:potato"
+        },
+        {
+          "item": "minecraft:beetroot"
+        },
+        {
+          "item": "minecraft:sweet_berries"
+        },
+        {
+          "item": "minecraft:carrot"
+        }
+      ]
+    }
+  },
+  "eat_watery": {
+    "type": "origins:action_on_item_use",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "slimeorigins:melting_state",
+      "operation": "add",
+      "change": -9
+    },
+    "item_condition": {
+      "type": "origins:ingredient",
+      "ingredient": [
+        {
+          "item": "minecraft:melon_slice"
+        },
+        {
+          "item": "minecraft:pumpkin_pie"
+        },
+        {
+          "item": "minecraft:honey_bottle"
+        },
+        {
+          "item": "minecraft:chorus_fruit"
+        }
+      ]
+    }
+  },
+  "warming": {
+    "type": "origins:action_over_time",
+    "interval": 10,
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:biome",
+            "condition": {
+              "type": "origins:temperature",
+              "comparison": "==",
+              "compare_to": 2
+            }
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 2
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:biome",
+            "condition": {
+              "type": "origins:temperature",
+              "comparison": "==",
+              "compare_to": 3
+            }
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 4
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:on_fire"
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 5
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:biome",
+            "condition": {
+              "type": "origins:temperature",
+              "comparison": "==",
+              "compare_to": 4
+            }
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 7
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "minecraft:lava"
+            },
+            "comparison": ">=",
+            "compare_to": 1
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 10
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "minecraft:lava"
+            },
+            "comparison": ">=",
+            "compare_to": 2
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 5
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "minecraft:lava"
+            },
+            "comparison": ">=",
+            "compare_to": 3
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 8
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:on_block",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "slimeorigins:hot_blocks"
+            }
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 4
+          }
+        }
+      ]
+    }
+  },
+  "cooling": {
+    "type": "origins:action_over_time",
+    "interval": 8,
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:biome",
+            "condition": {
+              "type": "origins:temperature",
+              "comparison": "==",
+              "compare_to": 0
+            }
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": -4
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:biome",
+            "condition": {
+              "type": "origins:high_humidity"
+            }
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": -2
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "minecraft:water"
+            },
+            "comparison": ">=",
+            "compare_to": 1
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": -6
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "minecraft:water"
+            },
+            "comparison": ">=",
+            "compare_to": 2
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": -8
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "minecraft:water"
+            },
+            "comparison": ">=",
+            "compare_to": 3
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": -9
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:on_block",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "minecraft:ice"
+            },
+            "comparison": ">=",
+            "compare_to": 1
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": -5
+          }
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "slimeorigins:melting_state",
+          "operation": "add",
+          "change": -1
+        }
+      ]
+    }
+  },
+  "effects": {
+    "type": "origins:action_over_time",
+    "interval": 15,
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:resource",
+            "resource": "slimeorigins:melting_state",
+            "comparison": ">",
+            "compare_to": 50
+          },
+          "if_action": {
+            "type": "origins:set_on_fire",
+            "duration": 2
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:resource",
+            "resource": "slimeorigins:melting_state",
+            "comparison": ">",
+            "compare_to": 52
+          },
+          "if_action": {
+            "type": "origins:damage",
+            "amount": 3,
+            "source": {
+              "name": "onFire",
+              "magic": true,
+              "bypasses_armor": true
+            }
+          }
+        },
+        {
+          "type": "origins:if_else_list",
+          "actions": [
+            {
+              "condition": {
+                "type": "origins:resource",
+                "resource": "slimeorigins:melting_state",
+                "comparison": ">",
+                "compare_to": 64
+              },
+              "action": {
+                "type": "origins:damage",
+                "amount": 7,
+                "source": {
+                  "name": "onFire",
+                  "fire": true,
+                  "bypasses_armor": true
+                }
+              }
+            },
+            {
+              "condition": {
+                "type": "origins:resource",
+                "resource": "slimeorigins:melting_state",
+                "comparison": ">",
+                "compare_to": 48
+              },
+              "action": {
+                "type": "origins:damage",
+                "amount": 4,
+                "source": {
+                  "name": "onFire",
+                  "fire": true,
+                  "bypasses_armor": true
+                }
+              }
+            },
+            {
+              "condition": {
+                "type": "origins:resource",
+                "resource": "slimeorigins:melting_state",
+                "comparison": ">",
+                "compare_to": 32
+              },
+              "action": {
+                "type": "origins:damage",
+                "amount": 3,
+                "source": {
+                  "name": "onFire",
+                  "fire": true,
+                  "bypasses_armor": false
+                }
+              }
+            },
+            {
+              "condition": {
+                "type": "origins:resource",
+                "resource": "slimeorigins:melting_state",
+                "comparison": ">",
+                "compare_to": 12
+              },
+              "action": {
+                "type": "origins:damage",
+                "amount": 1,
+                "source": {
+                  "name": "onFire",
+                  "fire": true,
+                  "bypasses_armor": false
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "name": "Melting",
+  "description": "Your body isn't made to support high temperatures.\nTry to stay cold when in a hot biome or else, you might die"
+}

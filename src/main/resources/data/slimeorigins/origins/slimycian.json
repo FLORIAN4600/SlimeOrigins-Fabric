@@ -1,0 +1,20 @@
+{
+  "powers": [
+    "slimeorigins:slimycian/fragment",
+    "slimeorigins:better_jump",
+    "slimeorigins:worse_speed",
+    "slimeorigins:slimycian/bounce",
+    "slimeorigins:slimycian/climbing",
+    "slimeorigins:no_fd",
+    "slimeorigins:unfrag_totem",
+    "slimeorigins:melting_state",
+    "slimeorigins:slimycian/melting",
+    "slimeorigins:slimycian/skin",
+    "slimeorigins:frag_cooldown"
+  ],
+  "icon": "minecraft:slime_ball",
+  "order": 1,
+  "impact": 3,
+  "name": "Slimycian",
+  "description": "Half Human, Half Slime.\nIf you don't believe me, try to hug him."
+}
