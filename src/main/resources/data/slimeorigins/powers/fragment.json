@@ -1,0 +1,9 @@
+{
+  "type": "origins:prevent_death",
+  "entity_action": {
+    "type": "slimeorigins:fragmentation",
+    "power": 2
+  },
+  "name": "Fragmentation",
+  "description": "When you die your maximum health, your size and some other things are reduced.\nDoes this makes you harder to grab?"
+}

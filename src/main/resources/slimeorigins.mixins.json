@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "fr.florian4600.slimeorigins.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "BlockMixin",
+    "LivingEntityMixin",
+    "SlimeBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

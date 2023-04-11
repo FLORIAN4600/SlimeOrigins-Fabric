@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "slimeorigins",
+	"version": "${version}",
+	"name": "Slime Origins Refabriqued",
+	"description": "",
+	"authors": [
+		"FLORIAN4600"
+	],
+	"contact": {
+	},
+	"license": "MIT",
+	"icon": "",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"fr.florian4600.slimeorigins.SlimeOrigins"
+		]
+	},
+	"mixins": [
+		"slimeorigins.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.19",
+		"minecraft": "~1.16.5",
+		"java": ">=8",
+		"fabric": "*",
+		"origins": ">=0.7.3"
+	}
+}
