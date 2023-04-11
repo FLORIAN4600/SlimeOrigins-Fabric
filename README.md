@@ -42,4 +42,4 @@ This branch (main) is for documentation about the mod and datapack possibilities
 
 ## TODO
 
-- [ ] **Wiki**
+- [ ] **[Wiki](/wiki)**
