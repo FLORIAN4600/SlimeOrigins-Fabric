@@ -15,8 +15,23 @@ The slimycian -> can fragment on death but with a cooldown every 2 death
 
 ## Current Powers
 
-Bounciness -> ###'id: "slimeorigins:bounciness"
+Bounciness -> id: "slimeorigins:bounciness"
            -> make the owner of this power bounce on blocks
            -> configurable through json files
-           ->
-           -> "mine"
+           -> (take a look at the wiki for more)
+
+## Current Entity Actions
+
+Fragmentation -> id: "slimeorigins:fragmentation"
+              -> reduce the targeted entity size and some other abilities like a slime
+              -> kinda configurable through json
+              -> (wiki for more infos)
+
+DeFragmentation -> id: "slimeorigins:un_frag"
+                -> cancel all fragmentation actions from the targeted entity
+
+# WIP
+
+## TODO
+
+### Wiki
