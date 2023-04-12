@@ -28,7 +28,6 @@ public class FragmentationAction {
         }
 
         double health = SOUtils.getAndApplyModifier(entity, EntityAttributes.GENERIC_MAX_HEALTH, divide_by, 0.75d, inverted);
-        double speed = SOUtils.getAndApplyModifier(entity, EntityAttributes.GENERIC_MOVEMENT_SPEED, divide_by, 0.56d, !inverted);
         double size = SOUtils.getAndApplyModifier(entity, ENTITY_SIZE, divide_by, 1d, inverted);
 
 
@@ -47,21 +46,14 @@ public class FragmentationAction {
                 EntityAttributeModifier.Operation.ADDITION
         );
 
-        entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).addPersistentModifier(healthModifier);
-
-
-        EntityAttributeModifier speedModifier = new EntityAttributeModifier(
-                String.format("FragmentationSpeedDummy%d", flooredSize),
-                speed,
-                EntityAttributeModifier.Operation.ADDITION
-        );
-
-        entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).addPersistentModifier(speedModifier);
+        entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).addPersistentModifier(healthModifier);
 
         entity.setHealth(entity.getMaxHealth());
         entity.clearStatusEffects();
         entity.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 15, 4));
         entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 10, 3));
+
+        System.out.println(entity.getMovementSpeed()+"    "+ScaleTypes.MOTION.getScaleData(entity).getScale());
 
         ScaleTypes.HEIGHT.getScaleData(entity).setScale(inverted ? ScaleTypes.HEIGHT.getScaleData(entity).getScale()*divide_by : ScaleTypes.HEIGHT.getScaleData(entity).getScale()/divide_by);
         ScaleTypes.WIDTH.getScaleData(entity).setScale(inverted ? ScaleTypes.WIDTH.getScaleData(entity).getScale()*divide_by : ScaleTypes.WIDTH.getScaleData(entity).getScale()/divide_by);
@@ -72,6 +64,7 @@ public class FragmentationAction {
         SOUtils.applyScaleMultiplier(ScaleTypes.ATTACK.getScaleData(entity), divide_by, 0.65f, inverted);
         SOUtils.applyScaleMultiplier(ScaleTypes.KNOCKBACK.getScaleData(entity), divide_by, 0.61f, inverted);
         SOUtils.applyScaleMultiplier(ScaleTypes.JUMP_HEIGHT.getScaleData(entity), divide_by, 0.62f, inverted);
+        SOUtils.applyScaleMultiplier(ScaleTypes.MOTION.getScaleData(entity), divide_by, 0.51f, !inverted);
     }
 
 
@@ -88,8 +81,6 @@ public class FragmentationAction {
 
             entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).getModifiers().stream().filter(x -> x.getName().contains("FragmentationHealthDummy")).forEach(x -> entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).removeModifier(x));
 
-            entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getModifiers().stream().filter(x -> x.getName().contains("FragmentationSpeedDummy")).forEach(x -> entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).removeModifier(x));
-
             long pow = entity.getAttributeInstance(SOEntityAttributes.ENTITY_SIZE).getModifiers().stream().filter(x -> x.getName().contains("FragmentationSize")).count();
 
             entity.getAttributeInstance(SOEntityAttributes.ENTITY_SIZE).getModifiers().stream().filter(x -> x.getName().contains("FragmentationSize")).forEach(x -> entity.getAttributeInstance(SOEntityAttributes.ENTITY_SIZE).removeModifier(x));
@@ -103,7 +94,7 @@ public class FragmentationAction {
             SOUtils.revertScaleMultiplier(ScaleTypes.ATTACK.getScaleData(entity), size, 0.65f, pow, false);
             SOUtils.revertScaleMultiplier(ScaleTypes.KNOCKBACK.getScaleData(entity), size, 0.61f, pow, false);
             SOUtils.revertScaleMultiplier(ScaleTypes.JUMP_HEIGHT.getScaleData(entity), size, 0.62f, pow, false);
-
+            SOUtils.revertScaleMultiplier(ScaleTypes.MOTION.getScaleData(entity), size, 0.51f, pow, true);
             entity.setHealth(entity.getMaxHealth());
             entity.clearStatusEffects();
         }

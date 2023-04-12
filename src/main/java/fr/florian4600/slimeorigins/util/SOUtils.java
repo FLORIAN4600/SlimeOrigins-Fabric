@@ -15,8 +15,12 @@ public class SOUtils {
     }
 
     public static void revertScaleMultiplier(ScaleData scaleData, double instanceAttr, float multiplier, long power, boolean inverted) {
+        scaleData.setScale(revertMultiplier(scaleData.getScale(), instanceAttr, multiplier, power, inverted));
+    }
+
+    public static float revertMultiplier(float original, double instanceAttr, float multiplier, long power, boolean inverted) {
         if(multiplier <= 0f) multiplier = 1f;
-        scaleData.setScale(inverted ? scaleData.getScale()*(float) (instanceAttr/Math.pow(multiplier, power)) : scaleData.getScale()/(float) (instanceAttr/Math.pow(multiplier, power)));
+        return inverted ? original*(float) (instanceAttr/Math.pow(multiplier, power)) : original/(float) (instanceAttr/Math.pow(multiplier, power));
     }
 
     public static float applyMultiplier(float original, float power, float multiplier, boolean inverted) {
