@@ -100,7 +100,7 @@ public class FragmentationAction {
             SOUtils.revertScaleMultiplier(ScaleTypes.ATTACK_SPEED.getScaleData(entity), size, 0.72f, pow, true);
             SOUtils.revertScaleMultiplier(ScaleTypes.ATTACK.getScaleData(entity), size, 0.67f, pow, false);
             SOUtils.revertScaleMultiplier(ScaleTypes.KNOCKBACK.getScaleData(entity), size, 0.63f, pow, false);
-            SOUtils.revertScaleMultiplier(ScaleTypes.JUMP_HEIGHT.getScaleData(entity), size, 0.95f, pow, false);
+            SOUtils.revertScaleMultiplier(ScaleTypes.JUMP_HEIGHT.getScaleData(entity), size, 0.62f, pow, false);
 
             entity.setHealth(entity.getMaxHealth());
             entity.clearStatusEffects();

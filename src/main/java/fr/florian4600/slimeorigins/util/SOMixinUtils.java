@@ -6,6 +6,7 @@ import fr.florian4600.slimeorigins.powers.BouncyPower;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.power.Power;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -48,14 +49,14 @@ public class SOMixinUtils {
             BlockPos bp = livingEntity.getBlockPos();
             Vec3d velocity = livingEntity.getVelocity();
 
-            double xPlus = (pos.getX() - (double) bp.getX()) < 0 ? -Double.MIN_VALUE : Double.MIN_VALUE;
-            double zPlus = (pos.getZ() - (double) bp.getZ()) < 0 ? -Double.MIN_VALUE : Double.MIN_VALUE;
+            double xPlus = (pos.getX() - (double) bp.getX()) < 0 ? -Double.MIN_NORMAL : Double.MIN_NORMAL;
+            double zPlus = (pos.getZ() - (double) bp.getZ()) < 0 ? -Double.MIN_NORMAL : Double.MIN_NORMAL;
 
             if((velocity.y < -power.getMinVelDown() && world.getBlockState(new BlockPos(pos.x-xPlus, pos.y-1d, pos.z-zPlus)).isOf(block)) || (velocity.y > power.getMinVelUp() && world.getBlockState(new BlockPos(pos.x-xPlus, pos.y+ ScaleTypes.HEIGHT.getScaleData(livingEntity).getScale()*ScaleTypes.HITBOX_HEIGHT.getScaleData(livingEntity).getScale(), pos.z-zPlus)).isOf(block))) {
 
                 bp = new BlockPos(pos.x+xPlus, pos.y + (velocity.y > power.getMinVelUp() ? 2 : -1), pos.z+zPlus);
 
-                if(!world.getBlockState(bp).isFullCube(world, bp) && !world.getBlockState(bp).isOf(block) && !(velocity.y < -0.37663049823865513d || velocity.y > 0.37663049823865513d)) {
+                if((!world.getBlockState(bp).isFullCube(world, bp) || world.getBlockState(bp).isOf(Blocks.AIR) || world.getBlockState(bp).isOf(Blocks.WATER) || world.getBlockState(bp).isOf(Blocks.LAVA)) && !(velocity.y < -0.42d || velocity.y > 0.42d)) {
                     return;
                 }
 

@@ -5,7 +5,6 @@ import fr.florian4600.slimeorigins.data.serializables.SoundSerializable;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 
 import java.util.List;
 
