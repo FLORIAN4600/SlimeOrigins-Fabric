@@ -21,42 +21,42 @@ public class FragmentationAction {
 
         if(divide_by <= 0) divide_by = Float.MIN_NORMAL;
 
-        int flooredSize = (int) Math.floor(entity.getAttributeInstance(ENTITY_SIZE).getValue());
+        int flooredSize = (int) Math.floor(entity.getAttributeValue(ENTITY_SIZE));
 
         if (flooredSize == 0) {
-            flooredSize = (int) Math.floor(entity.getAttributeInstance(ENTITY_SIZE).getValue());
+            flooredSize = (int) Math.floor(entity.getAttributeValue(ENTITY_SIZE));
         }
 
-        double health = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).getValue();
-        double size = entity.getAttributeInstance(ENTITY_SIZE).getValue();
+        double health = SOUtils.getAndApplyModifier(entity, EntityAttributes.GENERIC_MAX_HEALTH, divide_by, 0.75d, inverted);
+        double speed = SOUtils.getAndApplyModifier(entity, EntityAttributes.GENERIC_MOVEMENT_SPEED, divide_by, 0.56d, !inverted);
+        double size = SOUtils.getAndApplyModifier(entity, ENTITY_SIZE, divide_by, 1d, inverted);
 
-        if(health == 0) {
-            health = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).getValue();
-        }
 
-        if(size == 0) {
-            size = entity.getAttributeInstance(ENTITY_SIZE).getValue();
-        }
-
-        health = SOUtils.applyModifier(health, divide_by, 0.75d, inverted);
-        size = SOUtils.applyModifier(size, divide_by, 1d, inverted);
-
-        EntityAttributeModifier SizeModifier = new EntityAttributeModifier(
+        EntityAttributeModifier sizeModifier = new EntityAttributeModifier(
                 String.format("FragmentationSize%d", flooredSize),
                 size,
                 EntityAttributeModifier.Operation.ADDITION
         );
 
-        entity.getAttributeInstance(ENTITY_SIZE).addPersistentModifier(SizeModifier);
+        entity.getAttributeInstance(ENTITY_SIZE).addPersistentModifier(sizeModifier);
 
-        EntityAttributeModifier HealthModifier = new EntityAttributeModifier(
-                String.format("FragmentationHealthDummy%d",flooredSize),
+
+        EntityAttributeModifier healthModifier = new EntityAttributeModifier(
+                String.format("FragmentationHealthDummy%d", flooredSize),
                 health,
                 EntityAttributeModifier.Operation.ADDITION
         );
 
+        entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).addPersistentModifier(healthModifier);
 
-        entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).addPersistentModifier(HealthModifier);
+
+        EntityAttributeModifier speedModifier = new EntityAttributeModifier(
+                String.format("FragmentationSpeedDummy%d", flooredSize),
+                speed,
+                EntityAttributeModifier.Operation.ADDITION
+        );
+
+        entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).addPersistentModifier(speedModifier);
 
         entity.setHealth(entity.getMaxHealth());
         entity.clearStatusEffects();
@@ -71,7 +71,7 @@ public class FragmentationAction {
         SOUtils.applyScaleMultiplier(ScaleTypes.ATTACK_SPEED.getScaleData(entity), divide_by, 0.72f, !inverted);
         SOUtils.applyScaleMultiplier(ScaleTypes.ATTACK.getScaleData(entity), divide_by, 0.67f, inverted);
         SOUtils.applyScaleMultiplier(ScaleTypes.KNOCKBACK.getScaleData(entity), divide_by, 0.63f, inverted);
-        SOUtils.applyScaleMultiplier(ScaleTypes.JUMP_HEIGHT.getScaleData(entity), divide_by, 0.95f, inverted);
+        SOUtils.applyScaleMultiplier(ScaleTypes.JUMP_HEIGHT.getScaleData(entity), divide_by, 0.62f, inverted);
     }
 
 
@@ -87,6 +87,8 @@ public class FragmentationAction {
             }
 
             entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).getModifiers().stream().filter(x -> x.getName().contains("FragmentationHealthDummy")).forEach(x -> entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).removeModifier(x));
+
+            entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getModifiers().stream().filter(x -> x.getName().contains("FragmentationSpeedDummy")).forEach(x -> entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).removeModifier(x));
 
             long pow = entity.getAttributeInstance(SOEntityAttributes.ENTITY_SIZE).getModifiers().stream().filter(x -> x.getName().contains("FragmentationSize")).count();
 

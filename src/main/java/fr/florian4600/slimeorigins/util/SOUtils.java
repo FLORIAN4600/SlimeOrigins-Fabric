@@ -1,5 +1,7 @@
 package fr.florian4600.slimeorigins.util;
 
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttribute;
 import virtuoel.pehkui.api.ScaleData;
 
 public class SOUtils {
@@ -21,6 +23,17 @@ public class SOUtils {
         if(power <= 0f) power = 1f;
         if(multiplier <= 0f) multiplier = 1f;
         return (inverted ? original*power*multiplier : original/(power*multiplier));
+    }
+
+    public static double getAndApplyModifier(LivingEntity entity, EntityAttribute entityAttribute, double power, double multiplier, boolean inverted) {
+
+        double value = entity.getAttributeValue(entityAttribute);
+
+        if(value == 0) {
+            value = entity.getAttributeValue(entityAttribute);
+        }
+
+        return applyModifier(value, power, multiplier, inverted);
     }
 
     public static double applyModifier(double original, double power, double multiplier, boolean inverted) {
