@@ -67,10 +67,10 @@ public class FragmentationAction {
         ScaleTypes.WIDTH.getScaleData(entity).setScale(inverted ? ScaleTypes.WIDTH.getScaleData(entity).getScale()*divide_by : ScaleTypes.WIDTH.getScaleData(entity).getScale()/divide_by);
         ScaleTypes.HITBOX_HEIGHT.getScaleData(entity).setScale(1.015f);
         ScaleTypes.HITBOX_WIDTH.getScaleData(entity).setScale(1.015f);
-        SOUtils.applyScaleMultiplier(ScaleTypes.REACH.getScaleData(entity), divide_by, 0.60f, inverted);
-        SOUtils.applyScaleMultiplier(ScaleTypes.ATTACK_SPEED.getScaleData(entity), divide_by, 0.72f, !inverted);
-        SOUtils.applyScaleMultiplier(ScaleTypes.ATTACK.getScaleData(entity), divide_by, 0.67f, inverted);
-        SOUtils.applyScaleMultiplier(ScaleTypes.KNOCKBACK.getScaleData(entity), divide_by, 0.63f, inverted);
+        SOUtils.applyScaleMultiplier(ScaleTypes.REACH.getScaleData(entity), divide_by, 0.59f, inverted);
+        SOUtils.applyScaleMultiplier(ScaleTypes.ATTACK_SPEED.getScaleData(entity), divide_by, 0.71f, !inverted);
+        SOUtils.applyScaleMultiplier(ScaleTypes.ATTACK.getScaleData(entity), divide_by, 0.65f, inverted);
+        SOUtils.applyScaleMultiplier(ScaleTypes.KNOCKBACK.getScaleData(entity), divide_by, 0.61f, inverted);
         SOUtils.applyScaleMultiplier(ScaleTypes.JUMP_HEIGHT.getScaleData(entity), divide_by, 0.62f, inverted);
     }
 
@@ -98,10 +98,10 @@ public class FragmentationAction {
             SOUtils.revertScaleMultiplier(ScaleTypes.WIDTH.getScaleData(entity), size, 1f, pow, false);
             ScaleTypes.HITBOX_HEIGHT.getScaleData(entity).setScale(1.000f);
             ScaleTypes.HITBOX_WIDTH.getScaleData(entity).setScale(1.000f);
-            SOUtils.revertScaleMultiplier(ScaleTypes.REACH.getScaleData(entity), size, 0.60f, pow, false);
-            SOUtils.revertScaleMultiplier(ScaleTypes.ATTACK_SPEED.getScaleData(entity), size, 0.72f, pow, true);
-            SOUtils.revertScaleMultiplier(ScaleTypes.ATTACK.getScaleData(entity), size, 0.67f, pow, false);
-            SOUtils.revertScaleMultiplier(ScaleTypes.KNOCKBACK.getScaleData(entity), size, 0.63f, pow, false);
+            SOUtils.revertScaleMultiplier(ScaleTypes.REACH.getScaleData(entity), size, 0.59f, pow, false);
+            SOUtils.revertScaleMultiplier(ScaleTypes.ATTACK_SPEED.getScaleData(entity), size, 0.71f, pow, true);
+            SOUtils.revertScaleMultiplier(ScaleTypes.ATTACK.getScaleData(entity), size, 0.65f, pow, false);
+            SOUtils.revertScaleMultiplier(ScaleTypes.KNOCKBACK.getScaleData(entity), size, 0.61f, pow, false);
             SOUtils.revertScaleMultiplier(ScaleTypes.JUMP_HEIGHT.getScaleData(entity), size, 0.62f, pow, false);
 
             entity.setHealth(entity.getMaxHealth());
