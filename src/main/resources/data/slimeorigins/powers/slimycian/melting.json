@@ -12,18 +12,7 @@
       "type": "origins:ingredient",
       "ingredient": [
         {
-          "item": "minecraft:potion"
-        },{
-          "item": "minecraft:milk_bucket"
-        },
-        {
-          "item": "minecraft:suspicious_stew"
-        },
-        {
-          "item": "minecraft:rabbit_stew"
-        },
-        {
-          "item": "minecraft:mushroom_stew"
+          "tag": "slimeorigins:liquid_food"
         }
       ]
     }
@@ -40,16 +29,7 @@
       "type": "origins:ingredient",
       "ingredient": [
         {
-          "item": "minecraft:potato"
-        },
-        {
-          "item": "minecraft:beetroot"
-        },
-        {
-          "item": "minecraft:sweet_berries"
-        },
-        {
-          "item": "minecraft:carrot"
+          "tag": "slimeorigins:humid_food"
         }
       ]
     }
@@ -66,16 +46,7 @@
       "type": "origins:ingredient",
       "ingredient": [
         {
-          "item": "minecraft:melon_slice"
-        },
-        {
-          "item": "minecraft:pumpkin_pie"
-        },
-        {
-          "item": "minecraft:honey_bottle"
-        },
-        {
-          "item": "minecraft:chorus_fruit"
+          "tag": "slimeorigins:watery_food"
         }
       ]
     }
@@ -155,16 +126,16 @@
             "type": "origins:in_block_anywhere",
             "block_condition": {
               "type": "origins:in_tag",
-              "tag": "minecraft:lava"
+              "tag": "slimeorigins:hot_in"
             },
-            "comparison": ">=",
-            "compare_to": 1
+            "comparison": ">",
+            "compare_to": 0
           },
           "if_action": {
             "type": "origins:change_resource",
             "resource": "slimeorigins:melting_state",
             "operation": "add",
-            "change": 10
+            "change": 4
           }
         },
         {
@@ -173,9 +144,27 @@
             "type": "origins:in_block_anywhere",
             "block_condition": {
               "type": "origins:in_tag",
-              "tag": "minecraft:lava"
+              "tag": "slimeorigins:hot_in"
             },
-            "comparison": ">=",
+            "comparison": ">",
+            "compare_to": 1
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": 2
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "slimeorigins:hot_in"
+            },
+            "comparison": ">",
             "compare_to": 2
           },
           "if_action": {
@@ -188,28 +177,10 @@
         {
           "type": "origins:if_else",
           "condition": {
-            "type": "origins:in_block_anywhere",
-            "block_condition": {
-              "type": "origins:in_tag",
-              "tag": "minecraft:lava"
-            },
-            "comparison": ">=",
-            "compare_to": 3
-          },
-          "if_action": {
-            "type": "origins:change_resource",
-            "resource": "slimeorigins:melting_state",
-            "operation": "add",
-            "change": 8
-          }
-        },
-        {
-          "type": "origins:if_else",
-          "condition": {
             "type": "origins:on_block",
             "block_condition": {
               "type": "origins:in_tag",
-              "tag": "slimeorigins:hot_blocks"
+              "tag": "slimeorigins:hot_on"
             }
           },
           "if_action": {
@@ -266,16 +237,34 @@
             "type": "origins:in_block_anywhere",
             "block_condition": {
               "type": "origins:in_tag",
-              "tag": "minecraft:water"
+              "tag": "slimeorigins:cool_in"
             },
-            "comparison": ">=",
+            "comparison": ">",
+            "compare_to": 0
+          },
+          "if_action": {
+            "type": "origins:change_resource",
+            "resource": "slimeorigins:melting_state",
+            "operation": "add",
+            "change": -3
+          }
+        },
+        {
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:in_block_anywhere",
+            "block_condition": {
+              "type": "origins:in_tag",
+              "tag": "slimeorigins:cool_in"
+            },
+            "comparison": ">",
             "compare_to": 1
           },
           "if_action": {
             "type": "origins:change_resource",
             "resource": "slimeorigins:melting_state",
             "operation": "add",
-            "change": -6
+            "change": -3
           }
         },
         {
@@ -284,34 +273,16 @@
             "type": "origins:in_block_anywhere",
             "block_condition": {
               "type": "origins:in_tag",
-              "tag": "minecraft:water"
+              "tag": "slimeorigins:cool_in"
             },
-            "comparison": ">=",
+            "comparison": ">",
             "compare_to": 2
           },
           "if_action": {
             "type": "origins:change_resource",
             "resource": "slimeorigins:melting_state",
             "operation": "add",
-            "change": -8
-          }
-        },
-        {
-          "type": "origins:if_else",
-          "condition": {
-            "type": "origins:in_block_anywhere",
-            "block_condition": {
-              "type": "origins:in_tag",
-              "tag": "minecraft:water"
-            },
-            "comparison": ">=",
-            "compare_to": 3
-          },
-          "if_action": {
-            "type": "origins:change_resource",
-            "resource": "slimeorigins:melting_state",
-            "operation": "add",
-            "change": -9
+            "change": -5
           }
         },
         {
@@ -320,10 +291,10 @@
             "type": "origins:on_block",
             "block_condition": {
               "type": "origins:in_tag",
-              "tag": "minecraft:ice"
+              "tag": "slimeorigins:cool_on"
             },
-            "comparison": ">=",
-            "compare_to": 1
+            "comparison": ">",
+            "compare_to": 0
           },
           "if_action": {
             "type": "origins:change_resource",
