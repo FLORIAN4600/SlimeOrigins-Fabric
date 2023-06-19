@@ -2,7 +2,8 @@
 
 ## Infos
 
-- *The source code of the mod is accesible through the **[1.16.5](../../tree/1.16.5)** , **[1.18.2](../../tree/1.18.2)** and **[1.19.3](../../tree/1.19.3)** branches.*
+- ~~*The source code of the mod is accesible through the **[1.16.5](../../tree/1.16.5)** , **[1.18.2](../../tree/1.18.2)** and **[1.19.3](../../tree/1.19.3)** branches.*~~
+- *The source code will be stored in generic branches (ex: 1.19 for latest 1.19 release (1.19.4)) and the versions of the mod would be stored into seperate tags (only for the latest version of minecraft the mod is in)*
 - *This branch (main) is for documentation about the mod and datapack possibilities*
 - *Branch with names containing only the minecraft version are including in dev features and not published features*
 
