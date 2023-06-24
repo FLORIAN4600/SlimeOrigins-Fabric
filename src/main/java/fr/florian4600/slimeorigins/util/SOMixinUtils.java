@@ -52,9 +52,9 @@ public class SOMixinUtils {
             double xPlus = (pos.getX() - (double) bp.getX()) < 0 ? -Double.MIN_NORMAL : Double.MIN_NORMAL;
             double zPlus = (pos.getZ() - (double) bp.getZ()) < 0 ? -Double.MIN_NORMAL : Double.MIN_NORMAL;
 
-            if((velocity.y < -power.getMinVelDown() && world.getBlockState(new BlockPos(pos.x-xPlus, pos.y-1d, pos.z-zPlus)).isOf(block)) || (velocity.y > power.getMinVelUp() && world.getBlockState(new BlockPos(pos.x-xPlus, pos.y+ ScaleTypes.HEIGHT.getScaleData(livingEntity).getScale()*ScaleTypes.HITBOX_HEIGHT.getScaleData(livingEntity).getScale(), pos.z-zPlus)).isOf(block))) {
+            if((velocity.y < -power.getMinVelDown() && world.getBlockState(new BlockPos((int) (pos.x-xPlus), (int) (pos.y-1d), (int) (pos.z-zPlus))).isOf(block)) || (velocity.y > power.getMinVelUp() && world.getBlockState(new BlockPos((int) (pos.x-xPlus), (int) (pos.y+ ScaleTypes.HEIGHT.getScaleData(livingEntity).getScale()*ScaleTypes.HITBOX_HEIGHT.getScaleData(livingEntity).getScale()), (int) (pos.z-zPlus))).isOf(block))) {
 
-                bp = new BlockPos(pos.x+xPlus, pos.y + (velocity.y > power.getMinVelUp() ? 2 : -1), pos.z+zPlus);
+                bp = new BlockPos((int) (pos.x+xPlus), (int) (pos.y + (velocity.y > power.getMinVelUp() ? 2 : -1)), (int) (pos.z+zPlus));
 
                 if((!world.getBlockState(bp).isFullCube(world, bp) || world.getBlockState(bp).isOf(Blocks.AIR) || world.getBlockState(bp).isOf(Blocks.WATER) || world.getBlockState(bp).isOf(Blocks.LAVA)) && !(velocity.y < -0.42d || velocity.y > 0.42d)) {
                     return;
@@ -80,7 +80,7 @@ public class SOMixinUtils {
                 ci.cancel();
                 return;
             }
-            if(velocity.y > 0.00f && world.getBlockState(livingEntity.getBlockPos().add(0, -1, 0)).isOf(block) || velocity.y < 0.00f && world.getBlockState(new BlockPos(pos.x, pos.y+ScaleTypes.HEIGHT.getScaleData(livingEntity).getScale(), pos.z)).isOf(block)) {
+            if(velocity.y > 0.00f && world.getBlockState(livingEntity.getBlockPos().add(0, -1, 0)).isOf(block) || velocity.y < 0.00f && world.getBlockState(new BlockPos((int) pos.x, (int) (pos.y+ScaleTypes.HEIGHT.getScaleData(livingEntity).getScale()), (int) pos.z)).isOf(block)) {
                 ci.cancel();
             }
         }
